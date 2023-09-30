@@ -15,19 +15,19 @@ return new class extends Migration
         if (Schema::hasTable('roles')) {
             DB::table('roles')->insert([
                 'id' => 1,
-                'type' => 'guest',
+                'name' => 'guest',
             ]);
             DB::table('roles')->insert([
                 'id' => 2,
-                'type' => 'user',
+                'name' => 'user',
             ]);
             DB::table('roles')->insert([
                 'id' => 3,
-                'type' => 'author',
+                'name' => 'author',
             ]);
             DB::table('roles')->insert([
                 'id' => 4,
-                'type' => 'admin',
+                'name' => 'admin',
             ]);
         }
     }

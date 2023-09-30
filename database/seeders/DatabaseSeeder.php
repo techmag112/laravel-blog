@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,15 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\User::factory(20)->create();
-         //([
-         //         'role_id' => 3,
-         //]);
-        \App\Models\Category::factory(5)->create();
-        \App\Models\Article::factory(30)->create();
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         User::factory(20)->create();
+         $categories = Category::factory(6)->create();
+         Article::factory(20)
+            ->create()
+            ->each(fn(Article $article) => $article
+                    ->categories()
+                    ->sync($categories->random(rand(1, 6)))
+            );
     }
 }

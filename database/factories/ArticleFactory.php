@@ -21,7 +21,7 @@ class ArticleFactory extends Factory
         return [
             'user_id' => User::query()->inRandomOrder()->where('role_id', 3)->value('id'),
             //'user_id' => User::factory(),
-             'category_id' => Category::query()->inRandomOrder()->value('id'),
+          //   'category_id' => Category::query()->inRandomOrder()->value('id'),
             //'category_id' => Category::factory(),
             'title' => ucfirst(fake()->text(20)),
             'body' => ucfirst(fake()->text(200)),

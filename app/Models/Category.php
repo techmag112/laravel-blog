@@ -15,9 +15,9 @@ class Category extends Model
         'category',
     ];
 
-    public function article(): HasMany
+    public function articles(): BelongsToMany
     {
-        return $this->HasMany(related: Article::class);
+        return $this->belongsToMany(related: Article::class);
     }
 
 }
