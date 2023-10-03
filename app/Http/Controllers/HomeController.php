@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -14,6 +15,15 @@ class HomeController extends Controller
      */
     public function __invoke(): View|Application|Factory
     {
-        return view('home');
+
+        $articles = Article::query()->orderByDesc('id')->take(6)->with('categories:name')->get();
+
+        //foreach ($articles as $article) {
+        //    foreach($article->categories as $category) {
+        //        dump($category->name);
+        //    };
+        //}
+
+        return view('home',  compact('articles'));
     }
 }
