@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
 return [
@@ -17,6 +18,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'Vite' => Vite::class,
 
     /*
     |--------------------------------------------------------------------------
