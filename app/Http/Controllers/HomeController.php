@@ -17,13 +17,6 @@ class HomeController extends Controller
     {
 
         $articles = Article::query()->orderByDesc('id')->take(6)->with('categories:name')->get();
-
-        //foreach ($articles as $article) {
-        //    foreach($article->categories as $category) {
-        //        dump($category->name);
-        //    };
-        //}
-
         return view('home',  compact('articles'));
     }
 }

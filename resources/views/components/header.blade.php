@@ -15,7 +15,7 @@
                         <a href="/articles"
                            class="ml-4 mr-4 text-white hover:text-pink"
                         >
-                            Статьи
+                            {{$slot}}
                         </a>
                     </nav>
                 </div><!-- /.header-menu -->

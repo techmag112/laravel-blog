@@ -1,21 +1,22 @@
 @extends('layout')
-@section('title', 'Главная страница')
+@section('title', 'Страницы')
 @section('content')
     <x-header>Статьи</x-header>
     <main class="py-16 lg:py-20">
         <div class="container">
             <h1 class="text-[26px] sm:text-xl xl:text-[48px] 2xl:text-2xl font-black">
-                Лучшие статьи
+                Статьи
             </h1>
 
+            @include('partials.category', compact('categories'))
+
             <div class="tasks grid gap-4 grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-14 xl:gap-y-20 mt-12 md:mt-20">
-
-                @foreach($articles as $article)
-
+                @foreach($articles as $key=>$article)
                     <div class="tasks-card flex flex-col rounded-3xl md:rounded-[40px] bg-card">
-                        <div class="tasks-card-photo overflow-hidden h-40 xs:h-48 sm:h-[280px] rounded-3xl md:rounded-[40px]">
-                            <a href="/article/{{$article->id}}">
-                                <img src={{$article->image}}
+                        <div
+                            class="tasks-card-photo overflow-hidden h-40 xs:h-48 sm:h-[280px] rounded-3xl md:rounded-[40px]">
+                            <a href="/article">
+                                <img src={{$article->cover}}
                                      class="object-cover w-full h-full"
                                      alt="">
                             </a>
@@ -26,27 +27,24 @@
                                 <div class="flex flex-wrap gap-3 mt-7">
                                     <a href="#"
                                        class="grow xs:grow-0 py-2 px-4 rounded-[32px] bg-[#2A2B4E] text-white no-underline text-xxs sm:text-xs font-semibold whitespace-nowrap">
-                                        @foreach($article->categories as $key => $category)
-                                            @if($key!=0) , @endif{{$category->name}}
-                                        @endforeach
+                                        {{$current_category[0]->name}}
                                     </a>
                                 </div>
                                 <div class="flex flex-wrap sm:items-center justify-center sm:justify-between mt-8 sm:mt-10">
-                                    <a class="btn btn-pink" href="/article/{{$article->id}}">
+                                    <a class="btn btn-pink" href="/article">
                                         Подробнее
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 @endforeach
 
+
+                {{ $articles->links('pagination::tailwind') }}
 
 
         </div>
     </main>
     <x-footer></x-footer>
 @endsection
-
-
