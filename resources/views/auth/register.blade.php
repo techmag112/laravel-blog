@@ -14,6 +14,7 @@
             <div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
                 <h1 class="mb-5 text-lg font-semibold">Регистрация</h1>
                 <form class="space-y-3" method="post" action="{{route('register')}}">
+                    @csrf
                     <input
                         class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/10 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold  @error('email') border-red-500 @enderror"
                         type="email"
@@ -21,7 +22,9 @@
                         required=""
                         autofocus=""
                         autocomplete="email"
-                        placeholder="E-mail">
+                        placeholder="E-mail"
+                        value="{{ old('email') }}">
+
                     <br>
                     @error('email')
                     <div class="text-red-500 mt-2">{{$message}}</div><br>
@@ -32,7 +35,7 @@
                            required=""
                            placeholder="Имя"
                            name="name"
-                    >
+                           value="{{ old('name') }}">
                     <br>
                     @error('name')
                     <div class="text-red-500 mt-2">{{$message}}</div><br>
