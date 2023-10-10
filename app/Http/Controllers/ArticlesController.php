@@ -14,11 +14,11 @@ class ArticlesController extends Controller
     public function __invoke($id = 1): View|Application|Factory
     {
         $categories = Category::query()->get();
-        $current_category = Category::query('name')->where('id', $id)->get();
+        $current_category = Category::query()->select('name')->where('id', $id)->first();
         $articles = Article::query()
             ->orderByDesc('created_at')
             ->whereRelation('categories', 'category_id', '=', $id)
             ->paginate(6);
-        return view('articles',  compact('articles', 'categories', 'current_category'));
+        return view('layouts.articles',  compact('articles', 'categories', 'current_category'));
     }
 }

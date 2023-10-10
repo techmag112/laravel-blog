@@ -15,7 +15,7 @@ class ArticleController extends Controller
         $article = Article::query()
             ->where('id', $id)
             ->with('categories:name')
-            ->get();
-        return view('article',  compact('article'));
+            ->first();
+        return view('layouts.article',  compact('article'));
     }
 }

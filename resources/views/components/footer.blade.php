@@ -1,8 +1,8 @@
     <footer class="footer py-8 sm:py-12 xl:py-16 bg-darkblue text-white">
-        <div class="container">
+        <div class="container" style="margin-left:50px; margin-right:50px;">
             <div class="flex flex-wrap lg:flex-nowrap items-center">
                 <div class="footer-logo order-0 basis-full sm:basis-1/2 lg:basis-1/3 shrink-0 text-center sm:text-left">
-                    <a href="/" rel="home">
+                    <a href="{{route('home')}}">
                         <img alt="CutCode"
                              class="w-[148px] md:w-[201px] h-[36px] md:h-[50px] inline-block"
                              src="{{ Vite::asset('resources/assets/images/nav/logo.svg')}}"
@@ -16,7 +16,7 @@
                     </div>
                 </div><!-- /.footer-copyright -->
 
-                <div class="footer-social order-1 lg:order-2 basis-full sm:basis-1/2 lg:basis-1/3 mt-8 sm:mt-0">
+                <div class="footer-social order-1 lg:order-2 basis-full sm:basis-1/2 lg:basis-1/3 mt-8 sm:mt-0" style="margin-right:50px;">
                     <div class="flex flex-wrap items-center justify-center sm:justify-end space-x-6">
                         <a class="inline-flex items-center text-white hover:text-pink"
                            href="#" rel="nofollow noopener"

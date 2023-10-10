@@ -11,8 +11,6 @@
     <link rel="mask-icon" href="{{ Vite::asset('resources/assets/images/safari-pinned-tab.svg')}}" color="#7843E9">
     <meta name="msapplication-TileColor" content="#7843E9">
     <meta name="theme-color" content="#7843E9">
-    <link rel="stylesheet" href="{{ Vite::asset('resources/assets/css/app.css')}}">
-    <script type="text/javascript" src="{{ Vite::asset('resources/assets/js/app.js')}}"></script>
     @vite('resources/js/app.js')
 </head>
 <body class="antialiased">

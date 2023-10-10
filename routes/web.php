@@ -2,9 +2,8 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Models\Article;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::middleware('guest')->group(function () {
+    Route::get('register', [AuthController::class, 'register'])->name('register');
+    Route::post('register', [AuthController::class, 'store']);
+    Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'authorization']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::get('/', HomeController::class)->name('home');
 Route::get('/articles/{id?}', ArticlesController::class);
 Route::get('/article/{id?}', ArticleController::class);

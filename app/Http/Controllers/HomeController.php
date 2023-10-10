@@ -16,7 +16,11 @@ class HomeController extends Controller
     public function __invoke(): View|Application|Factory
     {
 
-        $articles = Article::query()->orderByDesc('id')->take(6)->with('categories:name')->get();
-        return view('home',  compact('articles'));
+        $articles = Article::query()
+            ->orderByDesc('id')
+            ->take(6)
+            ->with('categories:name')
+            ->get();
+        return view('layouts.home',  compact('articles'));
     }
 }

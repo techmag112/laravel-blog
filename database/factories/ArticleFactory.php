@@ -24,9 +24,9 @@ class ArticleFactory extends Factory
           //   'category_id' => Category::query()->inRandomOrder()->value('id'),
             //'category_id' => Category::factory(),
             'title' => ucfirst(fake()->text(20)),
-            'body' => ucfirst(fake()->text(200)),
-            'cover' => fake()->imageUrl($width=100, $height=100),
-            'image' => fake()->imageUrl($width=400, $height=400),
+            'body' => ucfirst(fake()->text(600)),
+            'cover' => fake()->imageUrl($width=400, $height=240),
+            'image' => fake()->imageUrl($width=800, $height=600),
         ];
     }
 }
