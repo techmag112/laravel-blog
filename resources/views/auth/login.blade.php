@@ -5,7 +5,7 @@
     <main class="bg-darkblue text-white md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-20">
         <div class="container">
             <div class="text-center">
-                <a rel="home" href="/">
+                <a href="{{route('home')}}">
                     <img alt="CutCode"
                          class="w-[148px] md:w-[201px] h-[36px] md:h-[50px] inline-block"
                          src="{{ Vite::asset('resources/assets/images/nav/logo.svg')}}"
@@ -47,7 +47,7 @@
                 <div class="space-y-3 mt-5">
                     <div class="text-xxs md:text-xs">
                         <a class="text-white hover:text-white/70 font-bold"
-                           href="/forgot"
+                           href="{{route('forget.get')}}"
                         >
                             Забыли пароль?
                         </a>
