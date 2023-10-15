@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResetPasswordRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -41,7 +42,7 @@ class ForgotPasswordController extends Controller
             $message->to($request->email);
             $message->subject('Reset Password');
         });
-       return back()->with('message', 'We have e-mailed your password reset link!');
+       return back()->with('success', 'We have e-mailed your password reset link!');
     }
 
     public function showResetPasswordForm($token): View|Application|Factory
@@ -55,12 +56,12 @@ class ForgotPasswordController extends Controller
     }
 
 
-    public function submitResetPasswordForm(Request $request): Application|Redirector|RedirectResponse
+    public function submitResetPasswordForm(ResetPasswordRequest $request): Application|Redirector|RedirectResponse
     {
-        $request->validate([
-            'password' => 'required|string|min:5|confirmed',
-            'password_confirmation' => 'required'
-        ]);
+        //$request->validate([
+        //    'password' => 'required|string|min:5|confirmed',
+        //    'password_confirmation' => 'required'
+        //]);
 
         $updatePassword = DB::table('password_resets')
             ->where([

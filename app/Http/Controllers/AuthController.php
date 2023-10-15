@@ -58,7 +58,8 @@ class AuthController extends Controller
         User::query()->create([
             'email' => $request->get('email'),
             'name' => $request->get('name'),
-            'password' => Hash::make($request->get('password'))
+            'password' => Hash::make($request->get('password')),
+            'email_verified_at' => now(),
         ]);
 
         return redirect()->route('login');

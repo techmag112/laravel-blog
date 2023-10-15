@@ -1,4 +1,3 @@
-
 @extends('layout')
 @section('title', 'Восстановление пароля')
 @section('content')
@@ -28,7 +27,9 @@
                     @error('email')
                     <div class="text-red-500 mt-2">{{$message}}</div><br>
                     @enderror
-
+                    @if(session()->has('success'))
+                        <div class="text-green-500 mt-2">{{ session()->get('success') }}</div><br>
+                    @endif
                     <button class="w-full btn btn-pink" type="submit">Отправить</button>
                 </form>
 

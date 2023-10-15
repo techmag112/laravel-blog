@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,12 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('profile', [ProfileController::class, 'profile']);
+    Route::post('profile', [ProfileController::class, 'store_profile'])->name('store_profile');
 });
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/articles/{id?}', ArticlesController::class);
 Route::get('/article/{id?}', ArticleController::class);
+
+
