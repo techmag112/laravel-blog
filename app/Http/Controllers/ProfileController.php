@@ -17,7 +17,12 @@ class ProfileController extends Controller
     public function profile(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         //$data = User::query()->where('id', '=', 1)->first();
-        return view('layouts.profile', ['name'=>Auth::user()->name, 'email'=>Auth::user()->email, 'save'=>false]);
+        return view('layouts.profile', [
+            'name'=>Auth::user()->name,
+            'email'=>Auth::user()->email,
+            'avatar' => Auth::user()->avatar,
+            'save'=>false]
+        );
     }
 
     /**
@@ -34,6 +39,12 @@ class ProfileController extends Controller
             'email' => $request->get('email'),
             'name' => $request->get('name'),
         ]);
-        return view('layouts.profile', ['name'=>Auth::user()->name, 'email'=>Auth::user()->email, 'save'=>true]);
+        return view('layouts.profile', [
+            'name'=>Auth::user()->name,
+            'email'=>Auth::user()->email,
+            'avatar' => Auth::user()->avatar,
+            'save'=>true
+        ]);
     }
+
 }

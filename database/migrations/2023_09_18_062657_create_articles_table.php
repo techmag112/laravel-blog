@@ -19,10 +19,6 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
-           // $table->foreignIdFor(Category::class)
-           //     ->constrained()
-           //     ->cascadeOnDelete()
-           //     ->cascadeOnUpdate();
             $table->string('title');
             $table->text('body');
             $table->string('cover');

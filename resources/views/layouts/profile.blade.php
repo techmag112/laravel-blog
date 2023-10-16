@@ -17,19 +17,11 @@
                         <div class="p-4 cursor-pointer rounded-md" :class="{'bg-pink': active === 2}" @click="active = 2"> Изменить пароль</div>
                     </div>
                     <div class="w-full p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
+
+                            @include('partials.avatar', ['avatar' => $avatar])
+
                         <form class="space-y-3" x-show="active === 1" method="post" action="{{route('store_profile')}}">
                             @csrf
-                            <div class="flex items-center justify-between">
-                                <div><input type="file" class="hidden">
-                                    <div class="mt-2"><img
-                                            src="{{ Vite::asset('resources/assets/images/nav/logo.svg')}}"
-                                            alt="" class="rounded-full h-20 w-20 object-cover"></div>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <button class="w-full btn btn-pink mt-2 mr-2" type="button"> Загрузить</button>
-                                    <button class="w-full btn btn-outline mt-2" type="button"> Удалить</button>
-                                </div>
-                            </div>
 
                             <input class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/10 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold"
                                    type="text"
