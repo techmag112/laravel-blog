@@ -14,7 +14,7 @@
             </div>
             <div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
                 <h1 class="mb-5 text-lg font-semibold">Вход в аккаунт</h1>
-                <form class="space-y-3" method="post" action="{{route('login')}}">
+                <form class="space-y-3" method="post" action="{{route('logon')}}">
                     @csrf
                     <input
                         class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/10 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold @error('email') border-red-500 @enderror"
@@ -31,7 +31,7 @@
                     @enderror
 
                     <input
-                        class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/10 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold  @error('password') border-red-500 @enderror"
+                        class="w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/10 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold"
                         type="password"
                         required=""
                         autocomplete="current-password"
@@ -39,8 +39,9 @@
                         name="password">
                     <br>
                     @error('password')
-                        <div class="text-red-500 mt-2">{{$message}}</div><br>
+                    <div class="text-red-500 mt-2">{{$message}}</div><br>
                     @enderror
+
                     <button class="w-full btn btn-pink" type="submit">Войти</button>
                 </form>
 

@@ -20,11 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
     Route::post('register', [AuthController::class, 'store']);
     Route::get('login', [AuthController::class, 'login'])->name('login');
-    Route::post('login', [AuthController::class, 'authorization']);
+    Route::post('login', [AuthController::class, 'authorization'])->name('logon');;
     Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.get');
     Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.post');
     Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.get');
@@ -33,10 +34,11 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('profile', [ProfileController::class, 'store_profile'])->name('store_profile');
-    Route::put('upload_avatar', [ImageController::class, 'update'])->name('upload_avatar');
-    Route::delete('delete_avatar', [ImageController::class, 'destroy'])->name('delete_avatar');
+    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('upload_avatar', [ImageController::class, 'update'])->name('upload_avatar');
+    Route::post('delete_avatar', [ImageController::class, 'destroy'])->name('delete_avatar');
+    Route::delete('profile', [ProfileController::class, 'store_password'])->name('store_password');
 });
 
 Route::get('/', HomeController::class)->name('home');

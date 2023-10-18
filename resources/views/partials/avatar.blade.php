@@ -15,7 +15,7 @@
     </div>
     <form action="{{route('upload_avatar')}}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('put')
+        <!--@method('put') -->
         <div class="flex justify-between" style='flex-wrap: nowrap; justify-content:flex-end; align-items:center'>
             <div>
                 <input type="file" name="avatar">
@@ -28,7 +28,7 @@
     <div>
         <form action="{{route('delete_avatar')}}" method="post">
             @csrf
-            @method('delete')
+            <!--@method('delete') -->
             <button class="w-full btn btn-outline mt-2" type="submit"> Удалить</button>
         </form>
     </div>
