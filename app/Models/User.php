@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use function PHPUnit\Framework\isEmpty;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,11 @@ class User extends Authenticatable
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id === 4 ? 1 : 0;
     }
 
 }

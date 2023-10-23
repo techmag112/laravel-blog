@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
@@ -19,7 +20,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//prefix('admin')->
+Route::middleware(['auth','isadmin'])->group(function() {
+    Route::resource('admin',  AdminController::class)->parameters([
+            'admin' => 'article'
+        ])->except('show');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
@@ -32,7 +38,8 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.post');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function ()
+{
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('profile', [ProfileController::class, 'store_profile'])->name('store_profile');
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
@@ -41,8 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('profile', [ProfileController::class, 'store_password'])->name('store_password');
 });
 
-Route::get('/', HomeController::class)->name('home');
 Route::get('/articles/{id?}', ArticlesController::class);
 Route::get('/article/{id?}', ArticleController::class);
+Route::get('/', HomeController::class)->name('home');
 
 

@@ -46,7 +46,7 @@ class AuthController extends Controller
            ]);
        }
         $request->session()->regenerate();
-        return redirect()->route('home');
+        return Auth::user()->isAdmin() ? redirect('admin') : redirect()->route('home');
     }
 
     /**

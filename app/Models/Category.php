@@ -12,7 +12,7 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category',
+        'name',
     ];
 
     public function articles(): BelongsToMany

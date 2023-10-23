@@ -15,6 +15,11 @@
     @vite('resources/js/app.js')
 </head>
 <body class="antialiased">
+    @if(session('message'))
+         <div class="bg-green-600 text-white p-5 text-center">
+            {{session('message')}}
+         </div>
+   @endif
     @yield('content')
 </body>
 </html>
